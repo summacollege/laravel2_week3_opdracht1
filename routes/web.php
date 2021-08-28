@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\MockObject\Builder\Stub;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $students = Student::all();
+    foreach($students as $student){
+        echo $student->achternaam . '<br>';
+        echo $student->voornaam . '<br>';
+        echo $student->woonplaats->woonplaats . '<br>';
+    }
 });
